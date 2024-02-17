@@ -88,6 +88,9 @@
   height: 40px;
   width: 40px;
 }
+.CreateAccount .TimelineTwo_BankContent {
+  margin-block: 1.5rem;
+}
 .CreateAccount .TimelineTwo_optional {
   margin-block: 1rem 3rem;
 }
@@ -227,13 +230,14 @@
 }
 .CreateAccount .TimelineFour_farms__card {
   height: 100%;
-  min-width: 250px;
+  min-width: 270px;
   width: 100%;
   margin-inline: auto;
   padding: 0.5rem;
   border-radius: 0.5rem;
   background-color: rgba(241, 186, 83, 0.02);
   border: 1px solid rgb(241, 186, 83);
+  background-color: linear-gradient(0deg, #FEDF89, #FEDF89), linear-gradient(0deg, #FFFAEB, #FFFAEB);
 }
 .CreateAccount .TimelineFour_farms__card > div, .CreateAccount .TimelineFour_farms__card > hr {
   margin: 0;
@@ -244,7 +248,9 @@
 }
 .CreateAccount .TimelineFour_farms__card h4 {
   font-weight: normal;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 .CreateAccount .TimelineFour_farms__card p {
   font-weight: 600;
@@ -274,12 +280,12 @@
   border-radius: 0.5rem;
 }
 .CreateAccount .TimelineFour_farms__card___content .coordinate .longitude p {
-  background-color: rgba(186, 255, 186, 0.564);
-  color: green;
+  background-color: #079455;
+  color: #F6FEF9;
 }
 .CreateAccount .TimelineFour_farms__card___content .coordinate .latitude p {
-  background-color: rgba(197, 223, 245, 0.876);
-  color: rgb(22, 22, 124);
+  background-color: #1570EF;
+  color: #EFF8FF;
 }
 .CreateAccount .TimelineFour_farms__card___content____crops {
   font-size: 0.75rem;
@@ -307,6 +313,11 @@
 }
 .CreateAccount .TimelineFour_farms__card___content____crops .document {
   width: auto;
+}
+.CreateAccount .TimelineFour_farms__card___content img {
+  height: 10px;
+  width: 10px;
+  transform: translateY(5px);
 }
 @media screen and (width < 950px) {
   .CreateAccount .TimelineFour {

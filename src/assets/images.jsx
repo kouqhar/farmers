@@ -17,7 +17,14 @@ import FingerPrint from "./icons_images/images/biometrics.svg"
 import ChangeUploadImage from "./icons_images/images/ButtonchangePicture.svg"
 import LoginGridImage from "./icons_images/images/loginImg.png"
 import VerificationGridImage from "./icons_images/images/veriImg.png"
-import Upload from "./icons_images/images/upload.png"
+import Upload from "./icons_images/images/uploadDoc.svg"
+import FarmName from "./icons_images/images/farmName.svg"
+import Coordinate from "./icons_images/images/coordinate.svg"
+import CropProduced from "./icons_images/images/cropProduced.svg"
+import Delete from "./icons_images/images/delete.svg"
+import Edit from "./icons_images/images/edit.svg"
+import AddedFarm from "./icons_images/images/addedFarm.svg"
+import DocumentIcon from "./icons_images/images/icondocument.svg"
 
 export {
 	AccountFourImage,
@@ -40,4 +47,11 @@ export {
 	LoginGridImage,
 	VerificationGridImage,
 	Upload,
+	FarmName,
+	Coordinate,
+	CropProduced,
+	Delete,
+	Edit,
+	AddedFarm,
+	DocumentIcon,
 }

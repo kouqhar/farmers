@@ -66,7 +66,7 @@ const TimeLineTwo = ({ handleNaviIndex, handleNextNavi }) => {
 						</div>
 					</div>
 				</FormGroup>
-				<FormGroup>
+				<FormGroup className={styles.TimelineTwo_BankContent}>
 					<label>Do you have a Bank Account</label>
 					<div className={[styles.TimelineTwo_BankAccount, "radio_btn"].join(" ")}>
 						<div className={styles.TimelineTwo_BankAccount__yes}>

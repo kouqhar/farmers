@@ -2,7 +2,16 @@ import { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import FormGroup from "../../UI/FormGroup"
 import SignUpUI from "./SignUpUI"
-import { AccountFourImage, Upload, FingerPrint } from "../../assets/images"
+import {
+	AccountFourImage, Upload,
+	FarmName,
+	Coordinate,
+	CropProduced,
+	Delete,
+	Edit,
+	AddedFarm,
+	DocumentIcon,
+} from "../../assets/images"
 
 // Styles
 import styles from "./styles/styles.module.css"
@@ -34,7 +43,7 @@ const InitialFarm = {
 	farmName: "",
 	longitude: "2.1547",
 	latitude: "24.927",
-	crop: "",
+	crop: "none",
 	from: "",
 	to: "",
 	farmDocument: ""
@@ -109,7 +118,7 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 
 					<div className={styles.Modal_content}>
 						<div className={styles.Modal_content__logo}>
-							<img src={FingerPrint} alt="Official logo" />
+							<img src={AddedFarm} alt="Official logo" />
 						</div>
 						<div className={styles.Modal_content__text}>
 							<h1>
@@ -150,8 +159,12 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 										<div key={`${farmName}-${idx}`} className={styles.TimelineFour_farms__card___header}>
 											<h2>{farmName}</h2>
 											<div>
-												<button className={styles.TimelineFour_deletecrop__deletebtn} onClick={() => handleEditFarm(idx)}>+</button>
-												<button className={styles.TimelineFour_deletecrop__deletebtn} onClick={() => handleDeleteFarm(idx)}>X</button>
+												<button className={styles.TimelineFour_deletecrop__deletebtn} onClick={() => handleEditFarm(idx)}>
+													<img src={Edit} alt="Edit Farm" />
+												</button>
+												<button className={styles.TimelineFour_deletecrop__deletebtn} onClick={() => handleDeleteFarm(idx)}>
+													<img src={Delete} alt="Delete Farm" />
+												</button>
 											</div>
 										</div>
 										<hr />
@@ -161,7 +174,7 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 											<div className={[styles.TimelineFour_farms__card___content____details, "space_between"].join(" ")}>
 
 												<div className={[styles.farmname, "space_between"].join(" ")}>
-													<img src="" alt="" />
+													<img src={FarmName} alt="Farm Name" />
 													<div>
 														<h4>Farm Name</h4>
 														<p>{farmName}</p>
@@ -169,7 +182,7 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 												</div>
 												<div className={[styles.coordinate, "space_between"].join(" ")}>
 													<div className={[styles.longitude, "space_between"].join(" ")}>
-														<img src="" alt="" />
+														<img src={Coordinate} alt="" />
 														<div>
 															<h4>Longitude</h4>
 															<p>{longitude}<sup>o</sup>N</p>
@@ -186,7 +199,7 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 
 
 												<div className={[styles.produced, "space_between"].join(" ")}>
-													<img src="" alt="" />
+													<img src={CropProduced} alt="" />
 													<div className={styles.crop}>
 														<h4>Crops Produced</h4>
 														<div className={styles.cropcard}>
@@ -201,7 +214,12 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 												</div>
 												<div className={styles.document}>
 													<h4>Documents</h4>
-													<p>{farmDocument}</p>
+													<p>
+														{
+															farmDocument ||
+															<img src={DocumentIcon} alt="Document" />
+														}
+													</p>
 												</div>
 											</div>
 										</div>

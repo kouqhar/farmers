@@ -121,6 +121,9 @@
         }  
 
         .TimelineTwo{
+            &_BankContent{
+                margin-block: 1.5rem;
+            }
             &_optional{
                 margin-block: 1rem 3rem;
 
@@ -288,13 +291,14 @@
 
                 &__card{
                     height: 100%;
-                    min-width: 250px;
+                    min-width: 270px;
                     width: 100%;
                     margin-inline: auto;
                     padding: .5rem;
                     border-radius: .5rem;
                     background-color: rgba(241, 186, 83, 0.02);
                     border: 1px solid rgb(241, 186, 83);
+                    background-color: linear-gradient(0deg, #FEDF89, #FEDF89), linear-gradient(0deg, #FFFAEB, #FFFAEB);
 
                     & > div , & > hr {
                         margin: 0;
@@ -307,7 +311,9 @@
 
                     h4{
                         font-weight: normal;
-                        font-size: .75rem;
+                        font-size: .7rem;
+                        font-weight: 500;
+                        text-transform: uppercase;
                     }
 
                     p{
@@ -340,13 +346,13 @@
                             }
 
                             .longitude p{
-                                background-color: rgba(186, 255, 186, 0.564);
-                                color: green;
+                                background-color: #079455;
+                                color:  #F6FEF9;
                             }
 
                             .latitude p{
-                                background-color: rgba(197, 223, 245, 0.876);
-                                color: rgb(22, 22, 124);
+                                background-color: #1570EF;
+                                color: #EFF8FF;
                             }
                         }
 
@@ -381,6 +387,13 @@
                             .document{
                                 width: auto;
                             }
+                        }
+
+
+                        img{
+                            height: 10px;
+                            width: 10px;
+                            transform: translateY(5px);
                         }
                     }
                 }
