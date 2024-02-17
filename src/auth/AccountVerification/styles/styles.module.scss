@@ -1,0 +1,52 @@
+.content{
+    width: 80%;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    &_verificationImage{
+        margin-inline: auto;
+        height: 20%;
+        width: 20%;
+
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &_verificationText{
+        &__btn{
+            display: grid;
+            gap: 2rem;
+
+            .otp{
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 1rem;
+
+                input{
+                    height: 80px;
+                    width: 40px;
+                    text-indent: 0;
+                    text-align: center;
+                    border: 1px solid #eee;
+
+                    @media screen and (width < 950px) {
+                        height: 50px;
+                        width: 25px;
+                    }
+                }
+            }
+        }
+    }
+
+    small{
+        font-weight: bolder;
+        padding: .5rem;
+        cursor: pointer;
+        background-color: aquamarine;
+
+    }
+}

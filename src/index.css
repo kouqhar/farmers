@@ -1,0 +1,159 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(90, 89, 89);
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: #0D8A6A;
+}
+
+input,
+select {
+  text-indent: .75rem;
+  background-color: #fff;
+  color: black;
+  border-radius: .5rem;
+  height: 5vh;
+}
+
+input:focus {
+  background-color: #fff;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  height: 15px;
+  width: 15px;
+}
+
+input[type="file"] {
+  width: auto;
+}
+
+label {
+  font-size: .8rem;
+  font-weight: 500;
+}
+
+select {
+  height: 6.5vh;
+  cursor: pointer;
+}
+
+button {
+  background-color: #0D8A6A;
+  color: #fff;
+  border: none;
+  padding-block: .5rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: transform 300ms ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.01);
+}
+
+button:disabled {
+  background-color: #90D0BF;
+  cursor: not-allowed;
+}
+
+input,
+button,
+select {
+  width: 100%;
+}
+
+/* Global custom styles */
+.btn_fullTrans {
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #D0D5DD;
+}
+
+.signupHideShow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-start: 1rem;
+}
+
+.signupHideShow img {
+  transform: translateY(180%);
+  cursor: pointer;
+}
+
+.navigation_btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-block-start: 1rem;
+}
+
+.radio_btn {
+  display: flex;
+  align-items: center;
+}
+
+.radio_btn>div {
+  display: flex;
+  align-items: center;
+}
+
+.go_back {
+  background-color: transparent;
+  color: #000;
+  border: 1px solid #b1b6be;
+}
+
+.Modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+}
+
+.Modal_backdrop {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.626);
+}
+
+.space_between {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* End Global custom styles */

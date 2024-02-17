@@ -1,0 +1,56 @@
+.content{
+    width: 80%;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+
+    &_welcomeText{
+        line-height: .65rem;
+    }
+
+    &_form{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: auto;
+        margin-block-start: 1rem;
+
+        &__emailOrPhone{
+            line-height: .2rem;
+            
+            p{
+                font-size: .65rem;
+            }
+        }
+
+        &__password{
+            display: flex;
+
+            &___hideShow{
+                transform: translateX(-150%);
+                cursor: pointer;
+            }
+
+            &___fingerprint{
+                height: 35px;
+                width: 35px;
+            }
+        }
+
+        &__reminder{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &___remind{
+                display: flex;
+                align-items: center;
+            }
+
+        }
+    }
+
+    &_accountInfo{
+        text-align: center;
+    }
+}

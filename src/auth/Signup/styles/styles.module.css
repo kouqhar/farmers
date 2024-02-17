@@ -1,0 +1,355 @@
+.CreateAccount {
+  width: 90%;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+}
+.CreateAccount .content {
+  display: grid;
+  gap: 1rem;
+}
+.CreateAccount .content_formNames {
+  display: flex;
+  gap: 1rem;
+}
+.CreateAccount .content_formNames label {
+  line-height: 1rem;
+}
+.CreateAccount .content_formNumber__number {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.CreateAccount .content_formNumber__number___flag {
+  height: 20px;
+  width: 35px;
+  border: 1px solid #D0D5DD;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+.CreateAccount .content_formNumber__number___flag img {
+  height: 100%;
+  width: 100%;
+}
+.CreateAccount .content_formNumber__number___countrycode {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.CreateAccount .content_formNumber__number___countrycode div {
+  width: 1%;
+  transform: translateX(1rem);
+  color: black;
+}
+.CreateAccount .content_formNumber__number___countrycode input {
+  text-indent: 20%;
+}
+.CreateAccount .content_formAgeGender {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.CreateAccount .content_formAgeGender div:nth-child(2) label {
+  font-size: 0.75rem;
+}
+.CreateAccount .content_formAgeGender__gender {
+  display: flex;
+}
+.CreateAccount .content_formAgeGender__gender > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.CreateAccount .content_documentImage__image___scan {
+  height: 10vh;
+  margin-block-start: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #D0D5DD;
+  border-radius: 0.5rem;
+}
+.CreateAccount .content_password__validation {
+  margin-block-start: 1rem;
+}
+.CreateAccount .content_password__validation > p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.CreateAccount .content_profilePicture__profile___avatar {
+  display: flex;
+  align-items: flex-end;
+  height: 8vh;
+}
+.CreateAccount .content_profilePicture__profile___avatar img {
+  height: 40px;
+  width: 40px;
+}
+.CreateAccount .TimelineTwo_optional {
+  margin-block: 1rem 3rem;
+}
+.CreateAccount .TimelineTwo_optional select {
+  margin-block-end: 1rem;
+}
+.CreateAccount .TimelineThree_fingerprints {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transform: translateX(-5%);
+  margin-block-start: 2rem;
+}
+.CreateAccount .TimelineThree_fingerprints__finger {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.CreateAccount .TimelineThree_fingerprints__finger img {
+  height: 30px;
+  width: 30px;
+}
+.CreateAccount .TimelineThree_info {
+  display: flex;
+  gap: 0.5rem;
+  color: rgb(169, 21, 21);
+}
+.CreateAccount .TimelineThree_info img {
+  height: 15px;
+  width: 15px;
+}
+.CreateAccount .TimelineThree_info span {
+  font-size: 0.6rem;
+}
+.CreateAccount .TimelineThree_skip {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-block: 1rem;
+  cursor: pointer;
+}
+.CreateAccount .TimelineThree_skip__content {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #D0D5DD;
+}
+.CreateAccount .TimelineFour {
+  display: flex;
+  max-width: 25rem;
+  flex-direction: column;
+  gap: 2rem;
+}
+.CreateAccount .TimelineFour h3 {
+  margin: 0;
+}
+.CreateAccount .TimelineFour_deletecrop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bolder;
+}
+.CreateAccount .TimelineFour_deletecrop__deletebtn {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-inline: 1rem;
+  background-color: transparent;
+  color: #000;
+}
+.CreateAccount .TimelineFour_coordinate__location {
+  display: flex;
+  gap: 1.2rem;
+}
+.CreateAccount .TimelineFour_croplists {
+  width: 100%;
+  display: grid;
+  gap: 1rem;
+  max-height: 50vh;
+  overflow: auto;
+}
+.CreateAccount .TimelineFour_crops {
+  width: 90%;
+  display: grid;
+  background-color: #eee;
+  border-radius: 1rem;
+  padding: 1rem;
+  gap: 2rem;
+}
+.CreateAccount .TimelineFour_crops__duration {
+  display: flex;
+  gap: 1.2rem;
+}
+.CreateAccount .TimelineFour_crops select {
+  text-indent: 0.3rem;
+  color: #5b5b5b;
+}
+.CreateAccount .TimelineFour_newcropbtn {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding-inline: 1rem;
+  color: #0D8A6A;
+  font-weight: bold;
+  background-color: rgba(13, 138, 107, 0.3019607843);
+  border: 1px solid #0D8A6A;
+}
+.CreateAccount .TimelineFour_farmDocument__document___file {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  border: 1px solid #D0D5DD;
+  padding-block: 1rem;
+  border-radius: 0.5rem;
+  margin-block-start: 0.5rem;
+}
+.CreateAccount .TimelineFour_farmDocument__document___file img {
+  height: 40px;
+  width: 40px;
+  margin-block-end: 1rem;
+}
+.CreateAccount .TimelineFour_farms {
+  max-height: 30vh;
+  display: flex;
+  gap: 1rem;
+  overflow-x: scroll;
+}
+.CreateAccount .TimelineFour_farms * {
+  margin: 0;
+  padding: 1.2px;
+}
+.CreateAccount .TimelineFour_farms__card {
+  height: 100%;
+  min-width: 250px;
+  width: 100%;
+  margin-inline: auto;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(241, 186, 83, 0.02);
+  border: 1px solid rgb(241, 186, 83);
+}
+.CreateAccount .TimelineFour_farms__card > div, .CreateAccount .TimelineFour_farms__card > hr {
+  margin: 0;
+  padding: 0;
+}
+.CreateAccount .TimelineFour_farms__card h2 {
+  font-size: 0.85rem;
+}
+.CreateAccount .TimelineFour_farms__card h4 {
+  font-weight: normal;
+  font-size: 0.75rem;
+}
+.CreateAccount .TimelineFour_farms__card p {
+  font-weight: 600;
+}
+.CreateAccount .TimelineFour_farms__card___header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.CreateAccount .TimelineFour_farms__card___content {
+  display: flex;
+  flex-direction: column;
+}
+.CreateAccount .TimelineFour_farms__card___content .coordinate {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.CreateAccount .TimelineFour_farms__card___content .coordinate p {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 0.65rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.5rem;
+}
+.CreateAccount .TimelineFour_farms__card___content .coordinate .longitude p {
+  background-color: rgba(186, 255, 186, 0.564);
+  color: green;
+}
+.CreateAccount .TimelineFour_farms__card___content .coordinate .latitude p {
+  background-color: rgba(197, 223, 245, 0.876);
+  color: rgb(22, 22, 124);
+}
+.CreateAccount .TimelineFour_farms__card___content____crops {
+  font-size: 0.75rem;
+}
+.CreateAccount .TimelineFour_farms__card___content____crops .produced {
+  width: 70%;
+}
+.CreateAccount .TimelineFour_farms__card___content____crops .produced .crop {
+  overflow: hidden;
+  width: 100%;
+}
+.CreateAccount .TimelineFour_farms__card___content____crops .produced .cropcard {
+  width: auto;
+  display: flex;
+  gap: 0.3rem;
+  overflow-x: scroll;
+  padding: 0 0.5rem 0.7rem;
+}
+.CreateAccount .TimelineFour_farms__card___content____crops .produced .crop_card {
+  border: 1px solid rgb(241, 186, 83);
+  background-color: rgba(255, 220, 156, 0.15);
+  padding: 0.2rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 0.5rem;
+}
+.CreateAccount .TimelineFour_farms__card___content____crops .document {
+  width: auto;
+}
+@media screen and (width < 950px) {
+  .CreateAccount .TimelineFour {
+    min-width: 100%;
+    max-width: 21rem;
+  }
+}
+.CreateAccount .Modal_content {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #fff;
+  color: #000;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  height: 40%;
+  width: 20%;
+  transform: translate(-50%, -50%);
+}
+.CreateAccount .Modal_content__logo {
+  height: 40px;
+  width: 40px;
+}
+.CreateAccount .Modal_content__logo img {
+  height: 100%;
+  width: 100%;
+}
+.CreateAccount .Modal_content__text {
+  line-height: 0.85rem;
+}
+.CreateAccount .Modal_content__btns {
+  display: grid;
+  width: 100%;
+  gap: 1rem;
+}
+@media screen and (width < 950px) {
+  .CreateAccount .Modal_content {
+    width: 80%;
+  }
+}/*# sourceMappingURL=styles.module.css.map */

@@ -1,0 +1,45 @@
+.content {
+  width: 80%;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+}
+.content_welcomeText {
+  line-height: 0.65rem;
+}
+.content_form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: auto;
+  margin-block-start: 1rem;
+}
+.content_form__emailOrPhone {
+  line-height: 0.2rem;
+}
+.content_form__emailOrPhone p {
+  font-size: 0.65rem;
+}
+.content_form__password {
+  display: flex;
+}
+.content_form__password___hideShow {
+  transform: translateX(-150%);
+  cursor: pointer;
+}
+.content_form__password___fingerprint {
+  height: 35px;
+  width: 35px;
+}
+.content_form__reminder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content_form__reminder___remind {
+  display: flex;
+  align-items: center;
+}
+.content_accountInfo {
+  text-align: center;
+}/*# sourceMappingURL=styles.module.css.map */
