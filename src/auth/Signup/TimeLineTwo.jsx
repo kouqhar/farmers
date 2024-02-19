@@ -21,8 +21,8 @@ const BANKS = [
 	},
 ]
 
-const TimeLineTwo = ({ handleNaviIndex, handleNextNavi }) => {
-	const [hasSmartPhone, setHasSmartPhone] = useState(false)
+const TimeLineTwo = ({ handleNaviIndex, handleNextNavi, handleFormData }) => {
+	const [hasSmartphone, setHasSmartPhone] = useState(false)
 	const [hasBankAccount, setHasBankAccount] = useState(false)
 	const [bankDetails, setBankDetails] = useState({
 		bankName: "",
@@ -42,6 +42,14 @@ const TimeLineTwo = ({ handleNaviIndex, handleNextNavi }) => {
 			...prevState,
 			[fieldName]: fieldValue
 		}))
+	}
+
+	const sendTimelineTwo = e => {
+		e.preventDefault()
+
+		handleFormData(["bankDetails", bankDetails])
+		handleFormData(["hasBankAndPhone", hasBankAccount, hasSmartphone])
+		handleNextNavi()
 	}
 
 	return (
@@ -92,7 +100,7 @@ const TimeLineTwo = ({ handleNaviIndex, handleNextNavi }) => {
 								<label>Bank Name *</label>
 								<div className={styles.TimelineTwo_BankName}>
 									<select
-										name="banks"
+										name="bankName"
 										onChange={handleBankInputChange}>
 										<option value={"Select bank"}>{"Select bank * "}</option>
 										{
@@ -117,7 +125,7 @@ const TimeLineTwo = ({ handleNaviIndex, handleNextNavi }) => {
 				}
 				<div className={["navigation_btn"]}>
 					<button onClick={() => handleNaviIndex(1)} className={["go_back"].join(" ")}>Back</button>
-					<button onClick={handleNextNavi} className={["forward"].join(" ")}>Continue</button>
+					<button onClick={sendTimelineTwo} className={["forward"].join(" ")}>Continue</button>
 				</div>
 			</div>
 		</SignUpUI>

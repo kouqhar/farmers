@@ -40,16 +40,17 @@ const CROPS = [
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May"]
 
 const InitialFarm = {
-	farmName: "",
-	longitude: "2.1547",
-	latitude: "24.927",
+	name: "",
+	long: "2.1547",
+	lat: "24.927",
 	crop: "none",
 	from: "",
 	to: "",
-	farmDocument: ""
+	docUploads: []
 }
 
-const TimeLineFour = ({ handleNaviIndex }) => {
+const TimeLineFour = ({ handleFormData, signupResponse, toastify }) => {
+	const [newUser, setNewUser] = useState([])
 	const [farmDetails, setFarmDetails] = useState(InitialFarm)
 	const [isBtnDisabled, setIsBtnDisabled] = useState(true)
 	const [isModalOpen, setIsModalOpen] = useState(false)
@@ -63,10 +64,14 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 	}
 
 	useEffect(() => {
-		if (crops.length > 0 || farmDetails.farmName.trim().length > 0)
+		setNewUser(signupResponse);
+	}, [signupResponse])
+
+	useEffect(() => {
+		if (crops.length > 0 || farmDetails.name.trim().length > 0)
 			setIsBtnDisabled(false)
 		else setIsBtnDisabled(true)
-	}, [crops, farmDetails.farmName])
+	}, [crops, farmDetails.name])
 
 	const handleInputChange = e => {
 		e.preventDefault()
@@ -91,7 +96,7 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 	const handleEditFarm = id => {
 	}
 
-	const handleAddFarm = e => {
+	const handleAddFarm = () => {
 		const crop = crops.map(crop => {
 			if (crop.crop.trim() !== "") return crop.crop
 		})
@@ -109,8 +114,14 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 		setCrops([])
 	}
 
+	const sendTimelineFour = () => {
+		const crops = farms.map(({ crops }, idx) => crops).flat(1)
+		handleFormData(["farmDetails", [{ ...farmDetails, crops, farms }]])
+	}
+
 	return (
 		<SignUpUI pageData={pageData}>
+
 			{
 				isModalOpen &&
 				<div className={[styles.Modal, "Modal"].join(" ")}>
@@ -132,8 +143,7 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 						</div>
 						<div className={styles.Modal_content__btns}>
 							<button onClick={() => {
-								handleModalClose()
-								navigate("/verify")
+								sendTimelineFour()
 							}
 							}>No, create my account</button>
 							<button onClick={handleModalClose} className={["go_back"].join(" ")}>Yes, I have another farm</button>
@@ -147,17 +157,17 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 					farms.length > 0 && (
 						<div className={styles.TimelineFour_farms}>
 							{
-								farms?.map(({ farmName,
-									longitude,
-									latitude,
+								farms?.map(({ name,
+									long,
+									lat,
 									crop,
 									crops,
 									from,
 									to,
-									farmDocument }, idx) => (
-									<div className={styles.TimelineFour_farms__card}>
-										<div key={`${farmName}-${idx}`} className={styles.TimelineFour_farms__card___header}>
-											<h2>{farmName}</h2>
+									docUploads }, idx) => (
+									<div key={`${name}-${idx}`} className={styles.TimelineFour_farms__card}>
+										<div className={styles.TimelineFour_farms__card___header}>
+											<h2>{name}</h2>
 											<div>
 												<button className={styles.TimelineFour_deletecrop__deletebtn} onClick={() => handleEditFarm(idx)}>
 													<img src={Edit} alt="Edit Farm" />
@@ -177,20 +187,20 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 													<img src={FarmName} alt="Farm Name" />
 													<div>
 														<h4>Farm Name</h4>
-														<p>{farmName}</p>
+														<p>{name}</p>
 													</div>
 												</div>
 												<div className={[styles.coordinate, "space_between"].join(" ")}>
-													<div className={[styles.longitude, "space_between"].join(" ")}>
+													<div className={[styles.long, "space_between"].join(" ")}>
 														<img src={Coordinate} alt="" />
 														<div>
 															<h4>Longitude</h4>
-															<p>{longitude}<sup>o</sup>N</p>
+															<p>{long}<sup>o</sup>N</p>
 														</div>
 													</div>
-													<div className={styles.latitude}>
+													<div className={styles.lat}>
 														<h4>Latitude</h4>
-														<p>{latitude}<sup>o</sup>E</p>
+														<p>{lat}<sup>o</sup>E</p>
 													</div>
 												</div>
 											</div>
@@ -216,7 +226,7 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 													<h4>Documents</h4>
 													<p>
 														{
-															farmDocument ||
+															docUploads ||
 															<img src={DocumentIcon} alt="Document" />
 														}
 													</p>
@@ -233,30 +243,30 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 						<label>Farm Name * </label>
 						<input
 							onChange={handleInputChange}
-							value={farmDetails?.farmName}
+							value={farmDetails?.name}
 							placeholder="Enter Farm Name"
-							name="farmName"
+							name="name"
 							required />
 					</div>
 				</FormGroup>
 				<FormGroup className={styles.TimelineFour_coordinate}>
 					<label>Farm Coordinates <span>(Optional)</span> </label>
 					<div className={styles.TimelineFour_coordinate__location}>
-						<div className={styles.TimelineFour_coordinate__location___longitude}>
+						<div className={styles.TimelineFour_coordinate__location___long}>
 							<input
 								onChange={handleInputChange}
-								value={farmDetails?.longitude}
+								value={farmDetails?.long}
 								placeholder="Longitude"
 								maxLength={5}
-								name="longitude" />
+								name="long" />
 						</div>
-						<div className={styles.TimelineFour_coordinate__location___latitude}>
+						<div className={styles.TimelineFour_coordinate__location___lat}>
 							<input
 								onChange={handleInputChange}
-								value={farmDetails?.latitude}
+								value={farmDetails?.lat}
 								placeholder="Latitude"
 								maxLength={5}
-								name="latitude" />
+								name="lat" />
 						</div>
 					</div>
 					<p>EX: Longitude: 8.5753<sup>o</sup>E Latitude: 9.0820<sup>o</sup>N</p>
@@ -267,9 +277,9 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 					{
 						crops.length > 0 && (
 							crops?.map((farm, idx) => (
-								<div className={styles.TimelineFour_crops} key={`${farm?.farmName}-${idx}`}>
+								<div className={styles.TimelineFour_crops} key={`${farm?.name}-${idx}`}>
 									<div className={styles.TimelineFour_deletecrop}>
-										<p>{farm?.farmName}</p>
+										<p>{farm?.name}</p>
 										<button className={styles.TimelineFour_deletecrop__deletebtn} onClick={() => handleDeleteCrop(idx)}>X</button>
 									</div>
 									<FormGroup>
@@ -344,7 +354,7 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 					</div>
 				</FormGroup>
 
-				<button className={styles.TimelineFour_newcropbtn} onClick={handleNewCrop} disabled={isBtnDisabled && !farmDetails.farmName.trim().length > 0}> + Add another crop</button>
+				<button className={styles.TimelineFour_newcropbtn} onClick={handleNewCrop} disabled={isBtnDisabled && !farmDetails.name.trim().length > 0}> + Add another crop</button>
 
 				<FormGroup className={styles.TimelineFour_farmDocument}>
 					<div className={styles.TimelineFour_farmDocument__document}>
@@ -354,8 +364,8 @@ const TimeLineFour = ({ handleNaviIndex }) => {
 							<input
 								onChange={handleInputChange}
 								type="file"
-								value={farmDetails?.farmDocument}
-								name="farmDocument" />
+								value={farmDetails?.docUploads}
+								name="docUploads" />
 							<p>PNG, JPG or PDF<span>(Max 10MB)</span></p>
 						</div>
 					</div>

@@ -1,8 +1,12 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios"
 import { Link } from "react-router-dom"
+
+// Dir
 import AuthPage from "../../UI/AuthPage"
 import FormGroup from "../../UI/FormGroup"
 import { LoginGridImage, FingerPrint, EyeOffImage } from "../../assets/images"
+import axiosRequest from "../../utils/axiosFunc"
 
 // Styles
 import styles from "./styles/styles.module.css"
@@ -10,8 +14,10 @@ import styles from "./styles/styles.module.css"
 const Login = () => {
 	const [isChecked, setIsChecked] = useState(false)
 	const [isShowPassword, setIsShowPassword] = useState(false)
+	const [loginResponse, setLoginResponse] = useState({})
+	const [toastify, setToastify] = useState(false)
 	const [userDetails, setUserDetails] = useState({
-		credentials: "",
+		credential: "",
 		password: "",
 		reminder: "",
 	})
@@ -33,13 +39,55 @@ const Login = () => {
 		}))
 	}
 
-	const handleLoginForm = e => {
+	const handleLoginForm = async (e) => {
 		e.preventDefault()
-		console.log("Form submitted : ", userDetails)
+		const userLoginPath = "/users/login"
+		const cancelToken = axios.CancelToken.source();
+		const reqOptions = {
+			path: userLoginPath,
+			cancelToken: cancelToken.token,
+			method: "POST",
+			data: { ...userDetails }
+		};
+
+		const response = await axiosRequest(reqOptions);
+		if (response) {
+			setToastify(true)
+
+			if (response?.status !== 200)
+				setLoginResponse({ data: response?.data?.response?.data?.message, status: response?.status })
+			else {
+				const { firstName, lastName } = response?.data?.data?.user
+				const data = `Successfully logged in as ${firstName + " " + lastName}!!!`
+				setLoginResponse({ data, status: response?.status })
+			}
+
+			const displayToastify = setTimeout(() => {
+				setToastify(false)
+			}, 7000);
+
+			return () => clearTimeout(displayToastify)
+		}
+
+		return () => {
+			cancelToken.cancel();
+		};
 	}
 
 	return (
 		<AuthPage {...pageData}>
+			{
+				toastify && (
+					<section className={["Toastify", loginResponse?.status !== 200 ? "info" : "success"].join(" ")}>
+						<button
+							className="ToastifyBtn"
+							onClick={() => setToastify(false)}>x</button>
+						<p>
+							{loginResponse?.data}
+						</p>
+					</section>
+				)
+			}
 			<div className={styles.content}>
 				<div className={styles.content_welcomeText}>
 					<h1>Welcome back!</h1>
@@ -51,9 +99,9 @@ const Login = () => {
 						<div className={styles.content_form__emailOrPhone}>
 							<input
 								onChange={handleInputChange}
-								value={userDetails?.credentials}
+								value={userDetails?.credential}
 								placeholder="Enter Email address or Phone Number"
-								name="credentials" />
+								name="credential" />
 							<p>Phone number must have country code E.g +234</p>
 						</div>
 					</FormGroup>

@@ -40,35 +40,37 @@ const SITES = [
 const InitialState = {
 	firstName: "",
 	lastName: "",
-	phoneNumber: "",
-	emailAddress: "",
-	age: "",
+	credential: "",
+	email: "",
+	ageGroup: "",
 	gender: "",
-	residentialAddress: "",
-	site: "",
+	resAddress: "",
+	siteId: "",
 	idType: "",
 	idNumber: "",
 	documentImage: "",
-	createPassword: "",
+	password: "",
 	confirmPassword: "",
-	profilePicture: "",
+	profilePic: "",
+	roleName: "Farmer"
 }
 
 const isValidIcon = check => check ? GreenCheckCircle : InvalidAlertImage
 
-const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
+const TimeLineOne = ({ handleNaviIndex, handleNextNavi, handleFormData }) => {
 	const [userDetails, setUserDetails] = useState(InitialState)
 	const [isToNextBtnDisabled, setIsToNextBtnDisabled] = useState(true)
 	const [isPasswordValid, setIsPasswordValid] = useState(false)
 	const [isFieldsValid, setIsFieldsValid] = useState(false)
 	const [isShowPassword, setIsShowPassword] = useState({
-		createPassword: false,
+		password: false,
 		confirmPassword: false,
 	})
 	const [validationColor, setValidationColor] = useState({
 		length: false,
 		specialChar: false,
-		isMatch: false
+		isMatch: false,
+		isCaps: false
 	})
 	const pageData = {
 		image: AccountOneImage,
@@ -86,34 +88,41 @@ const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
 
 	// Fields validation
 	useEffect(() => {
-		if (userDetails.firstName && userDetails.lastName && userDetails.phoneNumber && userDetails.age && userDetails.gender && userDetails.residentialAddress && userDetails.site && userDetails.idType && userDetails.idNumber)
+		if (userDetails.firstName && userDetails.lastName && userDetails.credential && userDetails.ageGroup && userDetails.gender && userDetails.resAddress && userDetails.siteId && userDetails.idType && userDetails.idNumber)
 			setIsFieldsValid(true)
 		else setIsFieldsValid(false)
 
-	}, [userDetails.firstName, userDetails.lastName, userDetails.phoneNumber, userDetails.age, userDetails.gender, userDetails.residentialAddress, userDetails.site, userDetails.idType, userDetails.idNumber])
+	}, [userDetails.firstName, userDetails.lastName, userDetails.credential, userDetails.ageGroup, userDetails.gender, userDetails.resAddress, userDetails.siteId, userDetails.idType, userDetails.idNumber])
 
 	// Password validation
 	useEffect(() => {
 		setValidationColor({
-			length: userDetails?.createPassword.length >= 8,
-			specialChar: userDetails?.createPassword.split("").some(elem => elem.match(/['!'|'@'|'#'|'$'|'%'|'^'|'&'|'*']/g)),
-			isMatch: userDetails?.createPassword.trim() === userDetails?.confirmPassword.trim()
+			length: userDetails?.password.length >= 8,
+			specialChar: userDetails?.password.split("").some(elem => elem.match(/(?=.*?[#?!@$%^&*-])/g)),
+			isCaps: userDetails?.password.split("").some(elem => elem.match(/^(?=.*?[^A-Za-z0-9])(?=.*?[^A-Za-z0-9])(?=.*?[^A-Za-z0-9])(?=.*?[A-Z])/g)),
+			isMatch: userDetails?.password.trim() === userDetails?.confirmPassword.trim()
 		})
 
 		if (validationColor?.length && validationColor?.specialChar && validationColor?.isMatch)
 			setIsPasswordValid(true)
 		else setIsPasswordValid(false)
-	}, [userDetails.createPassword, userDetails.confirmPassword])
+	}, [userDetails.password, userDetails.confirmPassword])
 
 	const handleInputChange = e => {
 		e.preventDefault()
 		const [fieldName, fieldValue] = [e.target.name, e.target.value]
-		// console.log(fieldName, e.target.files[0])
 
 		setUserDetails(prevState => ({
 			...prevState,
 			[fieldName]: fieldValue
 		}))
+	}
+
+	const sendTimelineOne = e => {
+		e.preventDefault()
+
+		handleFormData(["userDetails", userDetails])
+		handleNextNavi()
 	}
 
 	return (
@@ -151,10 +160,10 @@ const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
 							</div>
 							<input
 								onChange={handleInputChange}
-								value={userDetails?.phoneNumber}
+								value={userDetails?.credential}
 								placeholder="00 000 000 00"
-								name="phoneNumber"
-								maxLength="11"
+								name="credential"
+								maxLength="10"
 								required />
 						</div>
 					</div>
@@ -165,9 +174,9 @@ const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
 						<input
 							onChange={handleInputChange}
 							type="email"
-							value={userDetails?.emailAddress}
+							value={userDetails?.email}
 							placeholder="Enter email address"
-							name="emailAddress"
+							name="email"
 							required />
 					</div>
 				</FormGroup>
@@ -176,9 +185,9 @@ const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
 						<label>Age * </label>
 						<input
 							onChange={handleInputChange}
-							value={userDetails?.age}
+							value={userDetails?.ageGroup}
 							placeholder="Enter Age"
-							name="age"
+							name="ageGroup"
 							required />
 					</div>
 					<div>
@@ -187,14 +196,14 @@ const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
 							<div className={styles.content_formAgeGender__gender___male}>
 								<input
 									type="radio"
-									onClick={() => setUserDetails(prevState => ({ ...prevState, gender: "male" }))}
+									onClick={() => setUserDetails(prevState => ({ ...prevState, gender: "Male" }))}
 									name="gender" />
 								<span>Male</span>
 							</div>
 							<div className={styles.content_formAgeGender__gender___female}>
 								<input
 									type="radio"
-									onClick={() => setUserDetails(prevState => ({ ...prevState, gender: "female" }))}
+									onClick={() => setUserDetails(prevState => ({ ...prevState, gender: "Female" }))}
 									name="gender" />
 								<span>Female</span>
 							</div>
@@ -206,9 +215,9 @@ const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
 						<label>Residential address * </label>
 						<input
 							onChange={handleInputChange}
-							value={userDetails?.residentialAddress}
+							value={userDetails?.resAddress}
 							placeholder="Enter residential address"
-							name="residentialAddress"
+							name="resAddress"
 							required />
 					</div>
 				</FormGroup>
@@ -216,7 +225,7 @@ const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
 					<label>Site *</label>
 					<div className={styles.content_site}>
 						<select
-							name="site"
+							name="siteId"
 							onChange={handleInputChange}>
 							<option value={"Select site"}>{"Select site * "}</option>
 							{
@@ -265,14 +274,14 @@ const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
 					<div className={styles.content_password__create}>
 						<div className={[styles.content_password__create___hideShow, "signupHideShow"].join(" ")}>
 							<label>Create Password * </label>
-							<img src={EyeOffImage} onClick={handleisShowPassword} name="createPassword" alt="Hide/show Password" />
+							<img src={EyeOffImage} onClick={handleisShowPassword} name="password" alt="Hide/show Password" />
 						</div>
 						<input
 							onChange={handleInputChange}
-							type={isShowPassword?.createPassword ? "text" : "password"}
-							value={userDetails?.createPassword}
+							type={isShowPassword?.password ? "text" : "password"}
+							value={userDetails?.password}
 							placeholder="Create Password"
-							name="createPassword"
+							name="password"
 							required />
 					</div>
 					<div className={styles.content_password__confirm}>
@@ -297,6 +306,10 @@ const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
 							<img src={isValidIcon(validationColor?.isMatch)} alt="Password Validation" />
 							Passwords do not match
 						</p>
+						{/* <p style={{ color: validationColor.isCaps ? "green" : "red" }}>
+							<img src={isValidIcon(validationColor?.isCaps)} alt="Characters Transformation Validation" />
+							Must contain at least 1 CAPS, 1 lowercase, and 1 number
+						</p> */}
 						<p style={{ color: validationColor.specialChar ? "green" : "red" }}>
 							<img src={isValidIcon(validationColor?.specialChar)} alt="Special Characters Validation" />
 							Must contain one special character(#$%^&*)
@@ -311,8 +324,8 @@ const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
 							<input
 								onChange={handleInputChange}
 								type="file"
-								value={userDetails?.profilePicture}
-								name="profilePicture" />
+								value={userDetails?.profilePic}
+								name="profilePic" />
 						</div>
 						<p>PNG or JPG<span>(Max 5MB)</span></p>
 					</div>
@@ -320,8 +333,8 @@ const TimeLineOne = ({ handleNaviIndex, handleNextNavi }) => {
 				<div className={["navigation_btn"].join(" ")}>
 					<button onClick={() => handleNaviIndex(0)} className={["go_back"].join(" ")}>Back</button>
 					<button
-						// disabled={!isFieldsValid && !isPasswordValid} 
-						onClick={handleNextNavi} className={["forward"].join(" ")}>Continue</button>
+						disabled={!isFieldsValid && !isPasswordValid}
+						onClick={sendTimelineOne} className={["forward"].join(" ")}>Continue</button>
 				</div>
 			</div>
 

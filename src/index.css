@@ -157,4 +157,34 @@ select {
   align-items: flex-start;
 }
 
+.Toastify {
+  position: fixed;
+  top: 10%;
+  right: 0;
+  padding: .5rem 1rem;
+  width: fit-content;
+  border-radius: 1rem 0 0 1rem;
+  font-weight: 600;
+  color: #fff;
+  min-width: 10%;
+  max-width: 30%;
+  z-index: 999999;
+}
+
+.Toastify.info {
+  background-color: #213d64;
+}
+
+.Toastify.success {
+  background-color: #079455;
+}
+
+.ToastifyBtn {
+  background-color: "red";
+  font-weight: "bolder";
+  width: "15%";
+  border-radius: ".1rem";
+  padding: ".1rem"
+}
+
 /* End Global custom styles */

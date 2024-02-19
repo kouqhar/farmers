@@ -25,13 +25,14 @@
                 display: grid;
                 grid-template-columns: repeat(5, 1fr);
                 gap: 1rem;
+                place-items: center;
 
                 input{
                     height: 80px;
                     width: 40px;
                     text-indent: 0;
                     text-align: center;
-                    border: 1px solid #eee;
+                    border: 2px solid #181818;
 
                     @media screen and (width < 950px) {
                         height: 50px;
